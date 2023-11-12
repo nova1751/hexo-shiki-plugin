@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Aetf/hexo-shiki-plugin.git"
+    "url": "https://github.com/nova1751/hexo-shiki-plugin.git"
   },
   "bugs": {
-    "url": "https://github.com/Aetf/hexo-shiki-plugin/issues"
+    "url": "https://github.com/nova1751/hexo-shiki-plugin/issues"
   },
-  "homepage": "https://github.com/Aetf/hexo-shiki-plugin",
+  "homepage": "https://github.com/nova1751/hexo-shiki-plugin",
   "keywords": [
     "hexo",
     "shiki",
