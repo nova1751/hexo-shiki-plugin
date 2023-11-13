@@ -6,11 +6,11 @@ const config = hexo.config.shiki;
 const css = hexo.extend.helper.get("css").bind(hexo);
 const js = hexo.extend.helper.get("js").bind(hexo);
 hexo.extend.injector.register("head_end", () => {
-  return css("https://unpkg.com/hexo-shiki-plugin/lib/codeblock.css");
+  return css("https://127.0.0.1:5500/lib/codeblock.css");
 });
 
 hexo.extend.injector.register("body_end", () => {
-  return js("https://unpkg.com/hexo-shiki-plugin/lib/codeblock.js");
+  return js("https://127.0.0.1:5500/lib/codeblock.js");
 });
 return shiki
   .getHighlighter({

@@ -12,7 +12,7 @@
     rgba(40, 44, 52, 0.9)
   );
 }
-#article-container .highlight-tools {
+.highlight-tools {
   position: relative;
   display: -webkit-box;
   display: -moz-box;
@@ -33,26 +33,26 @@
   color: var(--hltools-color);
   font-size: var(--global-font-size);
 }
-#article-container figure.highlight table {
+figure.highlight table {
   display: block;
   overflow: auto;
   border: none;
 }
-#article-container figure.highlight table td {
+figure.highlight table td {
   padding: 0;
   border: none;
 }
 figure.highlight table {
   scrollbar-color: var(--hlscrollbar-bg) transparent;
 }
-#article-container figure.highlight .gutter pre {
+figure.highlight .gutter pre {
   padding-right: 10px;
   padding-left: 10px;
   background-color: var(--hlnumber-bg);
   color: var(--hlnumber-color);
   text-align: right;
 }
-#article-container figure.highlight .code pre {
+figure.highlight .code pre {
   padding-right: 10px;
   padding-left: 10px;
   width: 100%;
@@ -60,7 +60,7 @@ figure.highlight table {
 figure.highlight table::-webkit-scrollbar-thumb {
   background: var(--hlscrollbar-bg);
 }
-#article-container .code-expand-btn {
+.code-expand-btn {
   position: absolute;
   bottom: 0;
   z-index: 10;
@@ -74,7 +74,7 @@ figure.highlight table::-webkit-scrollbar-thumb {
 .fa-angles-down:before {
   content: "\f103";
 }
-#article-container .code-expand-btn i {
+.code-expand-btn i {
   padding: 6px 0;
   color: var(--hlnumber-color);
   -webkit-animation: code-expand-key 1.2s infinite;
@@ -83,19 +83,19 @@ figure.highlight table::-webkit-scrollbar-thumb {
   -ms-animation: code-expand-key 1.2s infinite;
   animation: code-expand-key 1.2s infinite;
 }
-#article-container figure.highlight {
+figure.highlight {
   margin: 0 0 24px;
   border-radius: 7px;
   -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
   -webkit-transform: translateZ(0);
 }
-#article-container .code-expand-btn:not(.expand-done) ~ pre,
-#article-container .code-expand-btn:not(.expand-done) ~ table {
+.code-expand-btn:not(.expand-done) ~ pre,
+.code-expand-btn:not(.expand-done) ~ table {
   overflow: hidden;
   height: 360px;
 }
-#article-container figure.highlight .highlight-tools:after {
+figure.highlight .highlight-tools:after {
   position: absolute;
   left: 14px;
   width: 12px;
@@ -106,10 +106,10 @@ figure.highlight table::-webkit-scrollbar-thumb {
   box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
   content: " ";
 }
-#article-container figure.highlight .highlight-tools .expand ~ .copy-button {
+figure.highlight .highlight-tools .expand ~ .copy-button {
   right: 2.1em;
 }
-#article-container .highlight-tools .copy-button {
+.highlight-tools .copy-button {
   position: absolute;
   right: 14px;
   cursor: pointer;
@@ -122,13 +122,13 @@ figure.highlight table::-webkit-scrollbar-thumb {
 .fa-angle-down:before {
   content: "\f107";
 }
-#article-container figure.highlight .highlight-tools .code-lang {
+figure.highlight .highlight-tools .code-lang {
   left: 75px;
 }
-#article-container figure.highlight .highlight-tools .expand {
+figure.highlight .highlight-tools .expand {
   right: 0;
 }
-#article-container figure.highlight .highlight-tools .expand.closed {
+figure.highlight .highlight-tools .expand.closed {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -140,17 +140,17 @@ figure.highlight table::-webkit-scrollbar-thumb {
   -ms-transform: rotate(90deg) !important;
   transform: rotate(90deg) !important;
 }
-#article-container .code-expand-btn.expand-done > i {
+.code-expand-btn.expand-done > i {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -o-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-#article-container figure.highlight .highlight-tools .expand ~ .copy-notice {
+figure.highlight .highlight-tools .expand ~ .copy-notice {
   right: 3.45em;
 }
-#article-container .highlight-tools .copy-notice {
+.highlight-tools .copy-notice {
   position: absolute;
   right: 2.4em;
   opacity: 0;
@@ -160,7 +160,7 @@ figure.highlight table::-webkit-scrollbar-thumb {
   -ms-transition: opacity 0.4s;
   transition: opacity 0.4s;
 }
-#article-container .code-expand-btn {
+.code-expand-btn {
   position: absolute;
   bottom: 0;
   z-index: 10;
@@ -170,7 +170,7 @@ figure.highlight table::-webkit-scrollbar-thumb {
   font-size: var(--global-font-size);
   cursor: pointer;
 }
-#article-container .code-expand-btn.expand-done + pre,
-#article-container .code-expand-btn.expand-done + table {
+.code-expand-btn.expand-done + pre,
+.code-expand-btn.expand-done + table {
   margin-bottom: 1.8em;
 }
