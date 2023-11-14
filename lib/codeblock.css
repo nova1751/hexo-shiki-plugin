@@ -8,7 +8,7 @@ figure.shiki table::-webkit-scrollbar {
   height: 5px;
 }
 /* code block figure */
-figure.shiki .highlight-tools.closed ~ * {
+figure.shiki .shiki-tools.closed ~ * {
   display: none;
 }
 figure.shiki {
@@ -26,7 +26,7 @@ figure.shiki {
   line-height: 1.6;
 }
 /* highlighttool bar */
-.highlight-tools {
+.shiki-tools {
   position: relative;
   display: -webkit-box;
   display: -moz-box;
@@ -48,7 +48,7 @@ figure.shiki {
   font-size: var(--global-font-size);
   user-select: none;
 }
-figure.shiki .highlight-tools .expand {
+figure.shiki .shiki-tools .expand {
   right: 0;
   position: absolute;
   padding: 0.57em 0.7em;
@@ -60,7 +60,7 @@ figure.shiki .highlight-tools .expand {
   transition: transform 0.3s;
 }
 
-figure.shiki .highlight-tools .expand.closed {
+figure.shiki .shiki-tools .expand.closed {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -72,7 +72,7 @@ figure.shiki .highlight-tools .expand.closed {
   -ms-transform: rotate(90deg) !important;
   transform: rotate(90deg) !important;
 }
-figure.shiki .highlight-tools .code-lang {
+figure.shiki .shiki-tools .code-lang {
   left: 75px !important;
   position: absolute;
   text-transform: uppercase;
@@ -84,7 +84,7 @@ figure.shiki .highlight-tools .code-lang {
   user-select: none;
 }
 
-figure.shiki .highlight-tools .expand ~ .copy-notice {
+figure.shiki .shiki-tools .expand ~ .copy-notice {
   right: 3.45em !important;
   position: absolute;
   opacity: 0;
@@ -95,7 +95,7 @@ figure.shiki .highlight-tools .expand ~ .copy-notice {
   transition: opacity 0.4s;
 }
 
-figure.shiki .highlight-tools .expand ~ .copy-button {
+figure.shiki .shiki-tools .expand ~ .copy-button {
   right: 2.1em;
   position: absolute;
   cursor: pointer;
@@ -105,10 +105,10 @@ figure.shiki .highlight-tools .expand ~ .copy-button {
   -ms-transition: color 0.2s;
   transition: color 0.2s;
 }
-.highlight-tools .copy-button:hover {
+.shiki-tools .copy-button:hover {
   color: #49b1f5;
 }
-figure.shiki .highlight-tools:after {
+figure.shiki .shiki-tools:after {
   position: absolute;
   left: 14px;
   width: 12px;
@@ -238,11 +238,18 @@ figure.shiki .code pre {
   width: 100% !important;
 }
 .code-expand-btn:not(.expand-done) ~ pre,
-.code-expand-btn:not(.expand-done) ~ table {
+.code-expand-btn:not(.expand-done) ~ *pre {
   overflow: hidden;
 }
+.code-expand-btn:not(.expand-done) ~ table,
+.code-expand-btn:not(.expand-done) ~ * table {
+  overflow: hidden;
+  height: 360px;
+}
 .code-expand-btn.expand-done + pre,
-.code-expand-btn.expand-done + table {
+.code-expand-btn.expand-done + * pre,
+.code-expand-btn.expand-done + table,
+.code-expand-btn.expand-done + * table {
   margin-bottom: 1.8em;
 }
 figure.shiki table {

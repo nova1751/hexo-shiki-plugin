@@ -7,14 +7,18 @@ on:
 
 jobs:
   tagged-release:
-    name: "Tagged Release"
-    runs-on: "ubuntu-latest"
-
+    runs-on: ubuntu-latest
     steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Create a Release
+        if: github.ref == 'refs/heads/main'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          prerelease: false
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          tag_name: ${{ steps.package_version.outputs.current-version}}
+          release_name: ${{ steps.package_version.outputs.current-version}}
+          body: ${{ steps.changelog_reader.outputs.changes }}
   npmjs_publish:
     runs-on: ubuntu-latest
     steps:
