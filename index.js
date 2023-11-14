@@ -1,6 +1,7 @@
 const shiki = require("shiki");
 const stripIndent = require("strip-indent");
 const themes = require("./lib/themes");
+const { version } = require("./package.json");
 const codeMatch =
   /^(?<start>\s*)(?<tick>~{3,}|`{3,})\ *(?<args>.*)\n(?<code>[\s\S]*?)^\s*\k<tick>(?<end>\s*)$/gm;
 const config = hexo.config.shiki;
@@ -36,6 +37,7 @@ hexo.extend.injector.register("body_end", () => {
   return `
   <script>
   const CODE_CONFIG = {
+    version: '${version}',
     beautify: ${beautify},
     highlightCopy: ${highlight_copy},
     highlightLang: ${highlight_lang},

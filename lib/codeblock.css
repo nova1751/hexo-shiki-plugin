@@ -251,3 +251,8 @@ figure.shiki table {
 figure.shiki pre code {
   background: none !important;
 }
+/* fix butterfly-theme-error */
+figure.shiki .table-wrap {
+  overflow: hidden;
+  margin: 0;
+}

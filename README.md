@@ -39,7 +39,7 @@
 > - `github-light`
 > - `github-dark`
 
-There are some other features ported from [hexp-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly.git)。The settings are below.
+There are some other features ported from [hexp-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly.git)。The available settings are below:
 
 ```yml
 shiki:
@@ -53,4 +53,24 @@ shiki:
     success: "Copy Success"
     error: "Copy Error"
     no_support: "Browser Not Support"
+```
+
+> [!NOTE]
+> Since shiki support a lot of beautiful themes,you can add your own cutom css files to load your own theme,here is a example
+
+```css
+:root {
+  --hl-color: #e1e4e8;
+  --hl-bg: #24292e;
+  --hltools-bg: #1f2428;
+  --hltools-color: #c5c5c5;
+  --hlnumber-bg: #24292e;
+  --hlnumber-color: #444d56;
+  --hlscrollbar-bg: #32383e;
+  --hlexpand-bg: linear-gradient(
+    180deg,
+    rgba(36, 41, 46, 0.6),
+    rgba(36, 41, 46, 0.9)
+  );
+}
 ```
