@@ -241,11 +241,6 @@ figure.shiki .code pre {
 .code-expand-btn:not(.expand-done) ~ *pre {
   overflow: hidden;
 }
-.code-expand-btn:not(.expand-done) ~ table,
-.code-expand-btn:not(.expand-done) ~ * table {
-  overflow: hidden;
-  height: 360px;
-}
 .code-expand-btn.expand-done + pre,
 .code-expand-btn.expand-done + * pre,
 .code-expand-btn.expand-done + table,
