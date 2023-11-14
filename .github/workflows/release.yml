@@ -21,7 +21,7 @@ jobs:
           validation_level: warn
           version: ${{ steps.package_version.outputs.current-version }}
           path: "CHANGELOG.md"
-      - name: Create a Release'
+      - name: Create a Release
         id: create_release
         uses: actions/create-release@v1
         env:
