@@ -12,6 +12,29 @@
     rgba(40, 44, 52, 0.9)
   );
 }
+figure.highlight {
+  margin: 0 0 24px;
+  border-radius: 7px;
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  position: relative;
+  overflow: auto;
+  padding: 0;
+  background: var(--hl-bg);
+  color: var(--hl-color);
+  line-height: 1.6;
+}
+figure.highlight pre {
+  overflow: auto;
+  margin: 0;
+  padding: 8px 0;
+  border: none;
+  background: var(--hl-bg);
+  color: var(--hl-color);
+  line-height: 1.6;
+}
 .highlight-tools {
   position: relative;
   display: -webkit-box;
@@ -33,67 +56,63 @@
   color: var(--hltools-color);
   font-size: var(--global-font-size);
 }
-figure.highlight table {
-  display: block;
-  overflow: auto;
-  border: none;
-}
-figure.highlight table td {
-  padding: 0;
-  border: none;
-}
-figure.highlight table {
-  scrollbar-color: var(--hlscrollbar-bg) transparent;
-}
-figure.highlight .gutter pre {
-  padding-right: 10px;
-  padding-left: 10px;
-  background-color: var(--hlnumber-bg);
-  color: var(--hlnumber-color);
-  text-align: right;
-}
-figure.highlight .code pre {
-  padding-right: 10px;
-  padding-left: 10px;
-  width: 100%;
-}
-figure.highlight table::-webkit-scrollbar-thumb {
-  background: var(--hlscrollbar-bg);
-}
-.code-expand-btn {
+figure.highlight .highlight-tools .expand {
+  right: 0;
   position: absolute;
-  bottom: 0;
-  z-index: 10;
-  width: 100%;
-  background: var(--hlexpand-bg);
-  text-align: center;
-  font-size: var(--global-font-size);
+  padding: 0.57em 0.7em;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  -ms-transition: -ms-transform 0.3s;
+  transition: transform 0.3s;
 }
-.fa-angle-double-down:before,
-.fa-angles-down:before {
-  content: "\f103";
+#content-inner figure.highlight .highlight-tools .expand.closed {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: rotate(90deg) !important;
+  -moz-transform: rotate(90deg) !important;
+  -o-transform: rotate(90deg) !important;
+  -ms-transform: rotate(90deg) !important;
+  transform: rotate(90deg) !important;
 }
-.code-expand-btn i {
-  padding: 6px 0;
-  color: var(--hlnumber-color);
-  -webkit-animation: code-expand-key 1.2s infinite;
-  -moz-animation: code-expand-key 1.2s infinite;
-  -o-animation: code-expand-key 1.2s infinite;
-  -ms-animation: code-expand-key 1.2s infinite;
-  animation: code-expand-key 1.2s infinite;
+figure.highlight .highlight-tools .code-lang {
+  left: 75px !important;
+  position: absolute;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.15em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-figure.highlight {
-  margin: 0 0 24px;
-  border-radius: 7px;
-  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
-  -webkit-transform: translateZ(0);
+figure.highlight .highlight-tools .expand ~ .copy-notice {
+  right: 3.45em !important;
 }
-.code-expand-btn:not(.expand-done) ~ pre,
-.code-expand-btn:not(.expand-done) ~ table {
-  overflow: hidden;
-  height: 360px;
+.highlight-tools .copy-notice {
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  -ms-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+figure.highlight .highlight-tools .expand ~ .copy-button {
+  right: 2.1em;
+}
+.highlight-tools .copy-button {
+  position: absolute;
+  cursor: pointer;
+  -webkit-transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  -o-transition: color 0.2s;
+  -ms-transition: color 0.2s;
+  transition: color 0.2s;
 }
 figure.highlight .highlight-tools:after {
   position: absolute;
@@ -106,39 +125,81 @@ figure.highlight .highlight-tools:after {
   box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
   content: " ";
 }
-figure.highlight .highlight-tools .expand ~ .copy-button {
-  right: 2.1em;
-}
-.highlight-tools .copy-button {
+.code-expand-btn {
   position: absolute;
-  right: 14px;
+  display: block;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  background: var(--hlexpand-bg);
+  text-align: center;
+  font-size: var(--global-font-size);
   cursor: pointer;
-  -webkit-transition: color 0.2s;
-  -moz-transition: color 0.2s;
-  -o-transition: color 0.2s;
-  -ms-transition: color 0.2s;
-  transition: color 0.2s;
 }
-.fa-angle-down:before {
-  content: "\f107";
+@-moz-keyframes code-expand-key {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
 }
-figure.highlight .highlight-tools .code-lang {
-  left: 75px;
+
+@-webkit-keyframes code-expand-key {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
 }
-figure.highlight .highlight-tools .expand {
-  right: 0;
+
+@-o-keyframes code-expand-key {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
 }
-figure.highlight .highlight-tools .expand.closed {
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-transform: rotate(90deg) !important;
-  -moz-transform: rotate(90deg) !important;
-  -o-transform: rotate(90deg) !important;
-  -ms-transform: rotate(90deg) !important;
-  transform: rotate(90deg) !important;
+
+@keyframes code-expand-key {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.code-expand-btn i {
+  padding: 6px 0;
+  color: var(--hlnumber-color);
+  -webkit-animation: code-expand-key 1.2s infinite;
+  -moz-animation: code-expand-key 1.2s infinite;
+  -o-animation: code-expand-key 1.2s infinite;
+  -ms-animation: code-expand-key 1.2s infinite;
+  animation: code-expand-key 1.2s infinite;
 }
 .code-expand-btn.expand-done > i {
   -webkit-transform: rotate(180deg);
@@ -147,28 +208,50 @@ figure.highlight .highlight-tools .expand.closed {
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-figure.highlight .highlight-tools .expand ~ .copy-notice {
-  right: 3.45em;
+figure.highlight table {
+  display: block;
+  overflow: auto;
+  border: none;
 }
-.highlight-tools .copy-notice {
-  position: absolute;
-  right: 2.4em;
-  opacity: 0;
-  -webkit-transition: opacity 0.4s;
-  -moz-transition: opacity 0.4s;
-  -o-transition: opacity 0.4s;
-  -ms-transition: opacity 0.4s;
-  transition: opacity 0.4s;
+figure.highlight table td {
+  padding: 0;
+  border: none;
 }
-.code-expand-btn {
-  position: absolute;
-  bottom: 0;
-  z-index: 10;
-  width: 100%;
-  background: var(--hlexpand-bg);
-  text-align: center;
+figure.highlight .gutter pre {
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: var(--hlnumber-bg);
+  color: var(--hlnumber-color);
+  text-align: right;
+}
+figure.highlight pre {
+  margin: 0;
+  padding: 8px 0;
+  border: none;
+}
+code,
+pre {
   font-size: var(--global-font-size);
-  cursor: pointer;
+  font-family: consolas, Menlo, pingfang sc, microsoft yahei, sans-serif;
+}
+figure.highlight,
+pre {
+  overflow: auto !important;
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+  background: var(--hl-bg) !important;
+  color: var(--hl-color) !important;
+  line-height: 1.6 !important;
+}
+figure.highlight .code pre {
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 100%;
+}
+.code-expand-btn:not(.expand-done) ~ pre,
+.code-expand-btn:not(.expand-done) ~ table {
+  overflow: hidden;
+  height: 360px;
 }
 .code-expand-btn.expand-done + pre,
 .code-expand-btn.expand-done + table {
