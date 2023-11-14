@@ -17,11 +17,13 @@ hexo.extend.injector.register("head_end", () => {
 if (config.highlight_height_limit) {
   hexo.extend.injector.register("head_end", () => {
     return `
+    <style>
     .code-expand-btn:not(.expand-done) ~ table,
     .code-expand-btn:not(.expand-done) ~ * table {
       overflow: hidden;
       height: ${config.highlight_height_limit}px;
     }
+    </style>
   `;
   });
 }
