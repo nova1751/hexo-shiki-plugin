@@ -13,10 +13,10 @@ hexo.extend.injector.register("head_end", () => {
 hexo.extend.injector.register("head_end", () => {
   return themes.get(theme);
 });
-if (hexo.config.shiki.highlight_height_limit) {
+if (config.highlight_height_limit) {
   hexo.extend.injector.register("head_end", () => {
     return `
-  <style>.code-expand-btn:not(.expand-done)~pre,.code-expand-btn:not(.expand-done)~table{height:${hexo.config.shiki.highlight_height_limit}px}</style>
+  <style>.code-expand-btn:not(.expand-done)~pre,.code-expand-btn:not(.expand-done)~table{height:${config.highlight_height_limit}px}</style>
   `;
   });
 }
@@ -26,17 +26,17 @@ hexo.extend.injector.register("body_end", () => {
 });
 hexo.extend.injector.register("body_end", () => {
   const {
-    beatutify,
+    beautify,
     highlight_copy,
     highlight_lang,
     highlight_height_limit,
     is_highlight_shrink,
     copy: { success, error, no_support },
-  } = hexo.config.shiki;
+  } = config;
   return `
   <script>
   const CODE_CONFIG = {
-    beautify: ${beatutify},
+    beautify: ${beautify},
     highlightCopy: ${highlight_copy},
     highlightLang: ${highlight_lang},
     highlightHeightLimit: ${highlight_height_limit},

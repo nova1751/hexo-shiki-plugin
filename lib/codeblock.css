@@ -213,29 +213,29 @@ figure.shiki table td {
   border: none;
 }
 figure.shiki .gutter pre {
-  padding-right: 10px;
-  padding-left: 10px;
-  background-color: var(--hlnumber-bg);
-  color: var(--hlnumber-color);
-  text-align: right;
-  user-select: none;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  background-color: var(--hlnumber-bg) !important;
+  color: var(--hlnumber-color) !important;
+  text-align: right !important;
+  user-select: none !important;
 }
 figure.shiki pre {
-  margin: 0;
-  padding: 8px 0;
-  border: none;
+  margin: 0 !important;
+  padding: 8px 0 !important;
+  border: none !important;
 }
 figure.shiki pre,
 figure.shiki pre code span {
-  font-size: var(--global-font-size);
-  font-family: consolas, 宋体, Menlo, pingfang sc, microsoft yahei, sans-serif;
-  overflow: auto;
-  line-height: 1.6;
+  font-size: var(--global-font-size) !important;
+  font-family: consolas, 宋体, Menlo, pingfang sc, microsoft yahei, sans-serif !important;
+  overflow: auto !important;
+  line-height: 1.6 !important;
 }
 figure.shiki .code pre {
-  padding-right: 10px;
-  padding-left: 10px;
-  width: 100%;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  width: 100% !important;
 }
 .code-expand-btn:not(.expand-done) ~ pre,
 .code-expand-btn:not(.expand-done) ~ table {
