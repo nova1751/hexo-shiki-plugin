@@ -1,22 +1,21 @@
-:root {
-  --hl-color: #abb2bf;
-  --hl-bg: #282c34;
-  --hltools-bg: #21252b;
-  --hltools-color: #bbbbbc;
-  --hlnumber-bg: #282c34;
-  --hlnumber-color: #495162;
-  --hlscrollbar-bg: #373c47;
-  --hlexpand-bg: linear-gradient(
-    180deg,
-    rgba(40, 44, 52, 0.6),
-    rgba(40, 44, 52, 0.9)
-  );
+/* scrollbar */
+figure.shiki table::-webkit-scrollbar-thumb {
+  background: var(--hlscrollbar-bg);
+  border-radius: 2.5px;
 }
-figure.highlight {
+figure.shiki table::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+/* code block figure */
+figure.shiki .highlight-tools.closed ~ * {
+  display: none;
+}
+figure.shiki {
   margin: 0 0 24px;
   border-radius: 7px;
-  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 5px 10px 0 rgba(144, 164, 174, 0.4);
+  box-shadow: 0 5px 10px 0 rgba(144, 164, 174, 0.4);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   position: relative;
@@ -26,15 +25,7 @@ figure.highlight {
   color: var(--hl-color);
   line-height: 1.6;
 }
-figure.highlight pre {
-  overflow: auto;
-  margin: 0;
-  padding: 8px 0;
-  border: none;
-  background: var(--hl-bg);
-  color: var(--hl-color);
-  line-height: 1.6;
-}
+/* highlighttool bar */
 .highlight-tools {
   position: relative;
   display: -webkit-box;
@@ -55,8 +46,9 @@ figure.highlight pre {
   background: var(--hltools-bg);
   color: var(--hltools-color);
   font-size: var(--global-font-size);
+  user-select: none;
 }
-figure.highlight .highlight-tools .expand {
+figure.shiki .highlight-tools .expand {
   right: 0;
   position: absolute;
   padding: 0.57em 0.7em;
@@ -67,7 +59,8 @@ figure.highlight .highlight-tools .expand {
   -ms-transition: -ms-transform 0.3s;
   transition: transform 0.3s;
 }
-#content-inner figure.highlight .highlight-tools .expand.closed {
+
+figure.shiki .highlight-tools .expand.closed {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -79,7 +72,7 @@ figure.highlight .highlight-tools .expand {
   -ms-transform: rotate(90deg) !important;
   transform: rotate(90deg) !important;
 }
-figure.highlight .highlight-tools .code-lang {
+figure.shiki .highlight-tools .code-lang {
   left: 75px !important;
   position: absolute;
   text-transform: uppercase;
@@ -90,10 +83,9 @@ figure.highlight .highlight-tools .code-lang {
   -ms-user-select: none;
   user-select: none;
 }
-figure.highlight .highlight-tools .expand ~ .copy-notice {
+
+figure.shiki .highlight-tools .expand ~ .copy-notice {
   right: 3.45em !important;
-}
-.highlight-tools .copy-notice {
   position: absolute;
   opacity: 0;
   -webkit-transition: opacity 0.4s;
@@ -102,10 +94,9 @@ figure.highlight .highlight-tools .expand ~ .copy-notice {
   -ms-transition: opacity 0.4s;
   transition: opacity 0.4s;
 }
-figure.highlight .highlight-tools .expand ~ .copy-button {
+
+figure.shiki .highlight-tools .expand ~ .copy-button {
   right: 2.1em;
-}
-.highlight-tools .copy-button {
   position: absolute;
   cursor: pointer;
   -webkit-transition: color 0.2s;
@@ -114,7 +105,10 @@ figure.highlight .highlight-tools .expand ~ .copy-button {
   -ms-transition: color 0.2s;
   transition: color 0.2s;
 }
-figure.highlight .highlight-tools:after {
+.highlight-tools .copy-button:hover {
+  color: #49b1f5;
+}
+figure.shiki .highlight-tools:after {
   position: absolute;
   left: 14px;
   width: 12px;
@@ -125,6 +119,7 @@ figure.highlight .highlight-tools:after {
   box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
   content: " ";
 }
+/* bottom toolbar */
 .code-expand-btn {
   position: absolute;
   display: block;
@@ -191,7 +186,6 @@ figure.highlight .highlight-tools:after {
     opacity: 0.6;
   }
 }
-
 .code-expand-btn i {
   padding: 6px 0;
   color: var(--hlnumber-color);
@@ -208,42 +202,37 @@ figure.highlight .highlight-tools:after {
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-figure.highlight table {
+/* code table */
+figure.shiki table {
   display: block;
   overflow: auto;
   border: none;
 }
-figure.highlight table td {
+figure.shiki table td {
   padding: 0;
   border: none;
 }
-figure.highlight .gutter pre {
+figure.shiki .gutter pre {
   padding-right: 10px;
   padding-left: 10px;
   background-color: var(--hlnumber-bg);
   color: var(--hlnumber-color);
   text-align: right;
+  user-select: none;
 }
-figure.highlight pre {
+figure.shiki pre {
   margin: 0;
   padding: 8px 0;
   border: none;
 }
-code,
-pre {
+figure.shiki pre,
+figure.shiki pre code span {
   font-size: var(--global-font-size);
-  font-family: consolas, Menlo, pingfang sc, microsoft yahei, sans-serif;
+  font-family: consolas, 宋体, Menlo, pingfang sc, microsoft yahei, sans-serif;
+  overflow: auto;
+  line-height: 1.6;
 }
-figure.highlight,
-pre {
-  overflow: auto !important;
-  margin: 0 0 20px !important;
-  padding: 0 !important;
-  background: var(--hl-bg) !important;
-  color: var(--hl-color) !important;
-  line-height: 1.6 !important;
-}
-figure.highlight .code pre {
+figure.shiki .code pre {
   padding-right: 10px;
   padding-left: 10px;
   width: 100%;
@@ -251,9 +240,14 @@ figure.highlight .code pre {
 .code-expand-btn:not(.expand-done) ~ pre,
 .code-expand-btn:not(.expand-done) ~ table {
   overflow: hidden;
-  height: 360px;
 }
 .code-expand-btn.expand-done + pre,
 .code-expand-btn.expand-done + table {
   margin-bottom: 1.8em;
+}
+figure.shiki table {
+  margin: 0;
+}
+figure.shiki pre code {
+  background: none !important;
 }
