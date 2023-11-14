@@ -20,22 +20,3 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Get current package version
-        id: package_version
-        uses: martinbeentjes/npm-get-version-action@v1.1.0
-      - name: Get Changelog Entry
-        id: changelog_reader
-        uses: mindsers/changelog-reader-action@v2.0.0
-        with:
-          validation_level: warn
-          version: ${{ steps.package_version.outputs.current-version }}
-          path: "CHANGELOG.md"
-      - name: Create a Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.package_version.outputs.current-version}}
-          release_name: ${{ steps.package_version.outputs.current-version}}
-          body: ${{ steps.changelog_reader.outputs.changes }}

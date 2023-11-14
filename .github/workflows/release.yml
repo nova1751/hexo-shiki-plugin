@@ -1,0 +1,34 @@
+name: "Tagged Release"
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  tagged-release:
+    name: "Tagged Release"
+    runs-on: "ubuntu-latest"
+
+    steps:
+       - name: Get current package version
+        id: package_version
+        uses: martinbeentjes/npm-get-version-action@v1.1.0
+      - name: Get Changelog Entry
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v2.0.0
+        with:
+          validation_level: warn
+          version: ${{ steps.package_version.outputs.current-version }}
+          path: "CHANGELOG.md"
+      - name: Create a Release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          prerelease: false
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          tag_name: ${{ steps.package_version.outputs.current-version}}
+          release_name: ${{ steps.package_version.outputs.current-version}}
+          body: ${{ steps.changelog_reader.outputs.changes }}
