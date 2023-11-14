@@ -2,7 +2,7 @@ const shiki = require("shiki");
 const stripIndent = require("strip-indent");
 const themes = require("./lib/themes");
 const codeMatch =
-  /^(?<start>\s*)(?<tick>~{3,}|`{3,})\s*(?<args>.*)\n(?<code>[\s\S]*?)^\s*\k<tick>(?<end>\s*)$/gm;
+  /^(?<start>\s*)(?<tick>~{3,}|`{3,})\ *(?<args>.*)\n(?<code>[\s\S]*?)^\s*\k<tick>(?<end>\s*)$/gm;
 const config = hexo.config.shiki;
 const theme = themes.has(config.theme) ? config.theme : "one-dark-pro";
 const css = hexo.extend.helper.get("css").bind(hexo);
@@ -13,11 +13,14 @@ hexo.extend.injector.register("head_end", () => {
 hexo.extend.injector.register("head_end", () => {
   return themes.get(theme);
 });
-hexo.extend.injector.register("head_end", () => {
-  return `
-  <style>.code-expand-btn:not(.expand-done)~pre,.code-expand-btn:not(.expand-done)~table{height:${hexo.config.shiki.highlightHeightLimit}px}</style>
+if (hexo.config.shiki.highlight_height_limit) {
+  hexo.extend.injector.register("head_end", () => {
+    return `
+  <style>.code-expand-btn:not(.expand-done)~pre,.code-expand-btn:not(.expand-done)~table{height:${hexo.config.shiki.highlight_height_limit}px}</style>
   `;
-});
+  });
+}
+
 hexo.extend.injector.register("body_end", () => {
   return js("https://unpkg.com/hexo-shiki-plugin@latest/lib/codeblock.js");
 });
@@ -39,9 +42,9 @@ hexo.extend.injector.register("body_end", () => {
     highlightHeightLimit: ${highlight_height_limit},
     isHighlightShrink: ${is_highlight_shrink},
     copy: {
-      success: ${success},
-      error: ${error},
-      noSupport: ${no_support},
+      success: '${success}',
+      error: '${error}',
+      noSupport: '${no_support}',
     }
   }
   </script>
