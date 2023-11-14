@@ -1,7 +1,4 @@
-name: "Tagged Release"
-
-permissions:
-  contents: write
+name: "Release"
 
 on:
   push:
@@ -10,10 +7,10 @@ on:
 
 jobs:
   tagged-release:
-    name: "Tagged Release"
     runs-on: "ubuntu-latest"
-
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Get current package version
         id: package_version
         uses: martinbeentjes/npm-get-version-action@v1.1.0
@@ -24,11 +21,12 @@ jobs:
           validation_level: warn
           version: ${{ steps.package_version.outputs.current-version }}
           path: "CHANGELOG.md"
-      - name: Create a Release
-        uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Create a Release'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          prerelease: false
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
           tag_name: ${{ steps.package_version.outputs.current-version}}
           release_name: ${{ steps.package_version.outputs.current-version}}
           body: ${{ steps.changelog_reader.outputs.changes }}

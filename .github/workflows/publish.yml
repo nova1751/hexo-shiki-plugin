@@ -1,4 +1,4 @@
-name: "Release and Publish"
+name: "Publish"
 
 on:
   push:
