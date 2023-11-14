@@ -1,5 +1,24 @@
 # Hexo Shiki Plugin
 
+<p align="left">
+  <a href="https://www.npmjs.com/package/hexo-shiki-plugin"
+    ><img
+      src="https://img.shields.io/npm/v/hexo-shiki-plugin.svg?style=flat-square&colorB=51C838"
+      alt="NPM Version"
+  /></a>
+  <a
+    href="https://github.com/nova1751/hexo-shiki-plugin/actions/workflows/publish.yml"
+    ><img
+      src="https://img.shields.io/github/actions/workflow/status/nova1751/hexo-shiki-plugin/publish.yml?style=flat-square"
+      alt="Build Status"
+  /></a>
+  <a href="https://github.com/nova1751/hexo-shiki-plugin/blob/main/LICENSE"
+    ><img
+      src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"
+      alt="License"
+  /></a>
+</p>
+
 > A code highlight plugin based on shiki,built for hexo.You can go to my [blog](https://refrain.cf) for preview.
 
 ## Installation

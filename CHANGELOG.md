@@ -6,3 +6,4 @@
 
 - Remove the css class conflicts with theme butterfly
 - fix some style conflicts
+- update github workflow
