@@ -3,8 +3,8 @@ const stripIndent = require("strip-indent");
 const themes = require("./lib/themes");
 const codeMatch =
   /^(?<start>\s*)(?<tick>~{3,}|`{3,})\s*(?<args>.*)\n(?<code>[\s\S]*?)^\s*\k<tick>(?<end>\s*)$/gm;
-const theme = themes.has(config.theme) ? config.theme : "one-dark-pro";
 const config = hexo.config.shiki;
+const theme = themes.has(config.theme) ? config.theme : "one-dark-pro";
 const css = hexo.extend.helper.get("css").bind(hexo);
 const js = hexo.extend.helper.get("js").bind(hexo);
 hexo.extend.injector.register("head_end", () => {
