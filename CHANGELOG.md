@@ -1,7 +1,8 @@
 # Changelog
 
-## [1.0.8] - 2023-11-14
+## [1.0.10] - 2023-11-14
 
 ### Bug fixes
 
-Remove the css class conflicts with theme butterfly
+- Remove the css class conflicts with theme butterfly
+- fix some style conflicts
