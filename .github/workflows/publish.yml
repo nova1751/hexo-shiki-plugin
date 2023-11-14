@@ -11,17 +11,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           registry-url: "https://registry.npmjs.org"
           node-version: 16
-
       - name: Publish to npmjs
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Get current package version
+        id: package_version
+        uses: martinbeentjes/npm-get-version-action@v1.1.0
+      - name: Get Changelog Entry
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v2.0.0
+        with:
+          validation_level: warn
+          version: ${{ steps.package_version.outputs.current-version }}
+          path: "CHANGELOG.md"
       - name: Create a Release
         if: github.ref == 'refs/heads/main'
         id: create_release
