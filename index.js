@@ -27,23 +27,23 @@ if (config.highlight_height_limit) {
   `;
   });
 }
-
+const {
+  beautify,
+  highlight_copy,
+  highlight_lang,
+  highlight_height_limit,
+  is_highlight_shrink,
+  copy: { success, error, no_support } = {},
+} = config;
+if (beautify) {
+  hexo.extend.injector.register("body_end", () => {
+    return js("https://unpkg.com/hexo-shiki-plugin@latest/lib/codeblock.js");
+  });
+}
 hexo.extend.injector.register("body_end", () => {
-  return js("https://unpkg.com/hexo-shiki-plugin@latest/lib/codeblock.js");
-});
-hexo.extend.injector.register("body_end", () => {
-  const {
-    beautify,
-    highlight_copy,
-    highlight_lang,
-    highlight_height_limit,
-    is_highlight_shrink,
-    copy: { success, error, no_support },
-  } = config;
   return `
   <script>
   const CODE_CONFIG = {
-    version: '${version}',
     beautify: ${beautify},
     highlightCopy: ${highlight_copy},
     highlightLang: ${highlight_lang},
@@ -54,7 +54,15 @@ hexo.extend.injector.register("body_end", () => {
       error: '${error}',
       noSupport: '${no_support}',
     }
-  }
+  };
+  console.log(
+    \`%c hexo-shiki-plugin %c ${
+      "v" + version
+    } %c https://github.com/nova1751/hexo-shiki-plugin\`,
+    "color: #fff; background: #5f5f5f",
+    "color: #fff; background: #70c6be",
+    ""
+  );
   </script>
   `;
 });

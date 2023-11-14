@@ -22,6 +22,7 @@ jobs:
           version: ${{ steps.package_version.outputs.current-version }}
           path: "CHANGELOG.md"
       - name: Create a Release
+        if: github.ref == 'refs/heads/master'
         id: create_release
         uses: actions/create-release@v1
         env:

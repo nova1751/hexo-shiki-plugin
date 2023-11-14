@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.17] - 2023-11-14
+
+### Chore
+
+- Simplify the code
+
 ## [1.0.16] - 2023-11-14
 
 ### Bug fixes
