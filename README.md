@@ -40,7 +40,7 @@
    ```
 
 > [!WARNING]
-> To avoid conflicts with the native code highlight plugin,please disable the native plugins
+> To avoid conflicts with the native code highlight plugin,please disable the native plugins.
 >
 > ```yml
 > highlight:
@@ -66,7 +66,7 @@
 
 If you choose a theme other than one of the built-in themes,the plugin will use the `one-dark-pro` codeblock style,and load the specific theme code.You can load more code highlight themes in [Themes](https://github.com/shikijs/shiki/blob/main/docs/themes.md).
 
-There are some other features ported from [hexp-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly.git)。The available settings are below:
+There are some other features ported from [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly.git).The available settings are below:
 
 > [!NOTE]
 > If you want to enable the code block beautify config, please make sure your website has introduced the font-awesome icon set.
