@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.18] - 2023-11-15
+
+### New Features
+
+- Add line_number option to show or hide line_number.
+- Add the code highlight theme,for themes not built in,load the theme code in the `one-dark-pro` codeblock style.
+
+### Bug Fixes
+
+- Change the table style to flex to avoid table wrap problems.
+- Use `em` unit to unify the code font size.
+
 ## [1.0.17] - 2023-11-14
 
 ### Chore

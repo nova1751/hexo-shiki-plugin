@@ -1,15 +1,18 @@
 /* scrollbar */
-figure.shiki table::-webkit-scrollbar-thumb {
+figure.shiki div.codeblock::-webkit-scrollbar-thumb {
   background: var(--hlscrollbar-bg);
   border-radius: 2.5px;
 }
-figure.shiki table::-webkit-scrollbar {
+figure.shiki div.codeblock::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 /* code block figure */
 figure.shiki .shiki-tools.closed ~ * {
   display: none;
+}
+figure.shiki div.codeblock {
+  margin: 0;
 }
 figure.shiki {
   margin: 0 0 24px;
@@ -45,7 +48,7 @@ figure.shiki {
   height: 2.15em;
   background: var(--hltools-bg);
   color: var(--hltools-color);
-  font-size: var(--global-font-size);
+  font-size: 1em;
   user-select: none;
 }
 figure.shiki .shiki-tools .expand {
@@ -66,14 +69,14 @@ figure.shiki .shiki-tools .expand.closed {
   -o-transition: all 0.3s;
   -ms-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-transform: rotate(90deg) !important;
-  -moz-transform: rotate(90deg) !important;
-  -o-transform: rotate(90deg) !important;
-  -ms-transform: rotate(90deg) !important;
-  transform: rotate(90deg) !important;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 figure.shiki .shiki-tools .code-lang {
-  left: 75px !important;
+  left: 75px;
   position: absolute;
   text-transform: uppercase;
   font-weight: 700;
@@ -85,7 +88,7 @@ figure.shiki .shiki-tools .code-lang {
 }
 
 figure.shiki .shiki-tools .expand ~ .copy-notice {
-  right: 3.45em !important;
+  right: 3.45em;
   position: absolute;
   opacity: 0;
   -webkit-transition: opacity 0.4s;
@@ -122,13 +125,14 @@ figure.shiki .shiki-tools:after {
 /* bottom toolbar */
 .code-expand-btn {
   position: absolute;
-  display: block;
+  display: flex;
   bottom: 0;
   z-index: 10;
   width: 100%;
   background: var(--hlexpand-bg);
-  text-align: center;
-  font-size: var(--global-font-size);
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
   cursor: pointer;
 }
 @-moz-keyframes code-expand-key {
@@ -202,13 +206,14 @@ figure.shiki .shiki-tools:after {
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* code table */
-figure.shiki table {
+/* codeblock */
+figure.shiki div.codeblock {
   display: block;
   overflow: auto;
   border: none;
+  display: flex;
 }
-figure.shiki table td {
+figure.shiki div.codeblock div {
   padding: 0;
   border: none;
 }
@@ -220,14 +225,21 @@ figure.shiki .gutter pre {
   text-align: right !important;
   user-select: none !important;
 }
+figure.shiki .gutter pre code {
+  color: var(--hlnumber-color) !important;
+}
 figure.shiki pre {
   margin: 0 !important;
   padding: 8px 0 !important;
   border: none !important;
+  background: none !important;
+}
+figure.shiki pre code {
+  background: none !important;
 }
 figure.shiki pre,
 figure.shiki pre code span {
-  font-size: var(--global-font-size) !important;
+  font-size: 1em;
   font-family: consolas, 宋体, Menlo, pingfang sc, microsoft yahei, sans-serif !important;
   overflow: auto !important;
   line-height: 1.6 !important;
@@ -243,18 +255,7 @@ figure.shiki .code pre {
 }
 .code-expand-btn.expand-done + pre,
 .code-expand-btn.expand-done + * pre,
-.code-expand-btn.expand-done + table,
-.code-expand-btn.expand-done + * table {
+.code-expand-btn.expand-done + div.codeblock,
+.code-expand-btn.expand-done + * div.codeblock {
   margin-bottom: 1.8em;
-}
-figure.shiki table {
-  margin: 0;
-}
-figure.shiki pre code {
-  background: none !important;
-}
-/* fix butterfly-theme-error */
-figure.shiki .table-wrap {
-  overflow: hidden;
-  margin: 0;
 }

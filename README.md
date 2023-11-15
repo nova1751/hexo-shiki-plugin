@@ -12,6 +12,12 @@
       src="https://img.shields.io/github/actions/workflow/status/nova1751/hexo-shiki-plugin/publish.yml?style=flat-square"
       alt="Build Status"
   /></a>
+  <a
+    href="https://github.com/hexojs/hexo/releases"
+    ><img
+      src="https://img.shields.io/badge/hexo-5.3.0+-0e83c"
+      alt="Hexo Version"
+  /></a>
   <a href="https://github.com/nova1751/hexo-shiki-plugin/blob/main/LICENSE"
     ><img
       src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"
@@ -43,15 +49,15 @@
 >   enable: false
 > ```
 >
-> for `hexo>=7.0.0` versions,please add a additional rule.
+> for `hexo>=7.0.0` versions,please add a additional line,leave `syntax_highlighter` to empty,just like below.
 >
 > ```yml
-> syntax_highlighter: none
+> syntax_highlighter:
 > ```
 
 ## Usage
 
-> this plugin has four themes built in,you can choose one of theme to display.
+> this plugin has four themes built in,you can choose one of theme to display.If you choose a theme other than one of the following theme,the plugin will use the `one-dark-pro` codeblock style,and load the specific theme code.
 >
 > - `one-dark-pro`
 > - `material-theme-palenight`
@@ -61,15 +67,16 @@
 There are some other features ported from [hexp-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly.git)。The available settings are below:
 
 > [!NOTE]
-> If you want to enable the code block beautify config, please make sure your website has introduced the font-awesome icon.
+> If you want to enable the code block beautify config, please make sure your website has introduced the font-awesome icon set.
 
 ```yml
 shiki:
   theme: github-light # highlight-theme
+  line_number: true # whether to show the line_number
   beautify: false # whether to add highlight tool true or false
   highlight_copy: true # copy button
   highlight_lang: false # show the code language
-  highlight_height_limit: 0 # code-block max height,unit: px
+  highlight_height_limit: 360 # code-block max height,unit: px
   is_highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
   copy: # copy message
     success: "Copy Success"
@@ -78,7 +85,7 @@ shiki:
 ```
 
 > [!NOTE]
-> Since shiki support a lot of beautiful themes,you can add your own cutom css files to load your own theme,here is a example
+> Since shiki support a lot of beautiful themes,you can add your own cutom css files to cusomize your codeblock style,here is a example:
 
 ```css
 :root {

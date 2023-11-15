@@ -5,29 +5,10 @@ const { version } = require("./package.json");
 const codeMatch =
   /^(?<start>\s*)(?<tick>~{3,}|`{3,})\ *(?<args>.*)\n(?<code>[\s\S]*?)^\s*\k<tick>(?<end>\s*)$/gm;
 const config = hexo.config.shiki;
-const theme = themes.has(config.theme) ? config.theme : "one-dark-pro";
-const css = hexo.extend.helper.get("css").bind(hexo);
-const js = hexo.extend.helper.get("js").bind(hexo);
-hexo.extend.injector.register("head_end", () => {
-  return css("https://unpkg.com/hexo-shiki-plugin@latest/lib/codeblock.css");
-});
-hexo.extend.injector.register("head_end", () => {
-  return themes.get(theme);
-});
-if (config.highlight_height_limit) {
-  hexo.extend.injector.register("head_end", () => {
-    return `
-    <style>
-    .code-expand-btn:not(.expand-done) ~ table,
-    .code-expand-btn:not(.expand-done) ~ * table {
-      overflow: hidden;
-      height: ${config.highlight_height_limit}px;
-    }
-    </style>
-  `;
-  });
-}
+if (!config) return;
 const {
+  theme,
+  line_number,
   beautify,
   highlight_copy,
   highlight_lang,
@@ -35,6 +16,29 @@ const {
   is_highlight_shrink,
   copy: { success, error, no_support } = {},
 } = config;
+const codeblockTheme = themes.has(theme) ? theme : "one-dark-pro";
+const css = hexo.extend.helper.get("css").bind(hexo);
+const js = hexo.extend.helper.get("js").bind(hexo);
+hexo.extend.injector.register("head_end", () => {
+  return css("https://unpkg.com/hexo-shiki-plugin@latest/lib/codeblock.css");
+});
+hexo.extend.injector.register("head_end", () => {
+  return themes.get(codeblockTheme);
+});
+if (config.highlight_height_limit) {
+  hexo.extend.injector.register("head_end", () => {
+    return `
+    <style>
+    .code-expand-btn:not(.expand-done) ~ div.codeblock,
+    .code-expand-btn:not(.expand-done) ~ * div.codeblock {
+      overflow: hidden;
+      height: ${config.highlight_height_limit}px;
+    }
+    </style>
+  `;
+  });
+}
+
 if (beautify) {
   hexo.extend.injector.register("body_end", () => {
     return js("https://unpkg.com/hexo-shiki-plugin@latest/lib/codeblock.js");
@@ -60,7 +64,7 @@ hexo.extend.injector.register("body_end", () => {
       "v" + version
     } %c https://github.com/nova1751/hexo-shiki-plugin\`,
     "color: #fff; background: #5f5f5f",
-    "color: #fff; background: #70c6be",
+    "color: #fff; background: #80c8f8",
     ""
   );
   </script>
@@ -79,17 +83,20 @@ return shiki
           code = stripIndent(code.trimEnd());
           const arr = code.split("\n");
           let numbers = "";
-          for (let i = 0, len = arr.length; i < len; i++) {
-            numbers += `<span class="line">${1 + i}</span><br>`;
+          let pre = hl.codeToHtml(code, { lang: args });
+          pre = pre.replace(/<pre[^>]*>/, (match) => {
+            return match.replace(/\s*style\s*=\s*"[^"]*"/, "");
+          });
+          result = `<figure class="shiki${args ? ` ${args}` : ""}">`;
+          result += "<div class='codeblock'>";
+          if (line_number) {
+            for (let i = 0, len = arr.length; i < len; i++) {
+              numbers += `<span class="line">${1 + i}</span><br>`;
+            }
+            result += `<div class="gutter"><pre><code>${numbers}</code></pre></div>`;
           }
-          const pre = hl.codeToHtml(code, { lang: args });
-          result = `<figure class="shiki${args ? ` ${args}` : ""}"${
-            args ? ` data-language="${args}"` : ""
-          }>`;
-          result += "<table><tr>";
-          result += `<td class="gutter"><pre>${numbers}</pre></td>`;
-          result += `<td class="code">${pre}</td>`;
-          result += "</tr></table></figure>";
+          result += `<div class="code">${pre}</div>`;
+          result += "</div></figure>";
           return `${start}<hexoPostRenderCodeBlock>${result}</hexoPostRenderCodeBlock>${end}`;
         } catch (e) {
           console.error(e);
