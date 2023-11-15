@@ -40,7 +40,7 @@
    ```
 
 > [!WARNING]
-> To avoid conflicts with the native code highlight plugin,please disable the native plugins
+> To avoid conflicts with the native code highlight plugin,please disable the native plugins.
 >
 > ```yml
 > highlight:
@@ -64,7 +64,7 @@
 > - `github-light`
 > - `github-dark`
 
-There are some other features ported from [hexp-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly.git)。The available settings are below:
+There are some other features ported from [hexp-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly.git)The available settings are below:
 
 > [!NOTE]
 > If you want to enable the code block beautify config, please make sure your website has introduced the font-awesome icon set.
