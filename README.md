@@ -57,12 +57,14 @@
 
 ## Usage
 
-> this plugin has four themes built in,you can choose one of theme to display.If you choose a theme other than one of the following theme,the plugin will use the `one-dark-pro` codeblock style,and load the specific theme code.
+> this plugin has four themes built in,you can choose one of theme to display:
 >
 > - `one-dark-pro`
 > - `material-theme-palenight`
 > - `github-light`
 > - `github-dark`
+
+If you choose a theme other than one of the built-in themes,the plugin will use the `one-dark-pro` codeblock style,and load the specific theme code.You can load more code highlight themes in [Themes](https://github.com/shikijs/shiki/blob/main/docs/themes.md).
 
 There are some other features ported from [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly.git).The available settings are below:
 
