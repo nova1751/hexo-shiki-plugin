@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.19] - 2023-11-16
+
+### Chore
+
+- Remove the box-shadow style to adapt the dark-mode
+
 ## [1.0.18] - 2023-11-15
 
 ### New Features
