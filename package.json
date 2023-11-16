@@ -26,6 +26,6 @@
   ],
   "dependencies": {
     "shiki": "^0.14.5",
-    "strip-indent": "^3.0.0"
+    "strip-indent": "^4.0.0"
   }
 }
