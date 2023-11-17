@@ -1,6 +1,6 @@
 {
   "name": "hexo-shiki-plugin",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "A beautiful hexo code block highlight plugin based on shiki",
   "author": "nova1751",
   "license": "MIT",
