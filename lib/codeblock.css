@@ -223,20 +223,15 @@ figure.shiki .gutter pre {
   text-align: right !important;
   user-select: none !important;
 }
-figure.shiki .gutter pre code {
-  color: var(--hlnumber-color) !important;
-}
 figure.shiki pre {
   margin: 0 !important;
   padding: 8px 0 !important;
   border: none !important;
-  background: none !important;
 }
 figure.shiki pre code {
   background: none !important;
 }
-figure.shiki pre,
-figure.shiki pre code span {
+figure.shiki .codeblock pre * {
   font-size: 1em;
   font-family: consolas, 宋体, Menlo, pingfang sc, microsoft yahei, sans-serif !important;
   overflow: auto !important;
@@ -246,6 +241,7 @@ figure.shiki .code pre {
   padding-right: 10px !important;
   padding-left: 10px !important;
   width: 100% !important;
+  background: none !important;
 }
 .code-expand-btn:not(.expand-done) ~ pre,
 .code-expand-btn:not(.expand-done) ~ *pre {

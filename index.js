@@ -79,29 +79,30 @@ return shiki
       post.content = post.content.replace(codeMatch, (...argv) => {
         let { start, end, args, code } = argv.pop();
         let result;
+        code = stripIndent(code.trimEnd());
+        const arr = code.split("\n");
+        let numbers = "";
+        let pre = "";
         try {
-          code = stripIndent(code.trimEnd());
-          const arr = code.split("\n");
-          let numbers = "";
-          let pre = hl.codeToHtml(code, { lang: args });
+          pre = hl.codeToHtml(code, { lang: args });
           pre = pre.replace(/<pre[^>]*>/, (match) => {
             return match.replace(/\s*style\s*=\s*"[^"]*"/, "");
           });
-          result = `<figure class="shiki${args ? ` ${args}` : ""}">`;
-          result += "<div class='codeblock'>";
-          if (line_number) {
-            for (let i = 0, len = arr.length; i < len; i++) {
-              numbers += `<span class="line">${1 + i}</span><br>`;
-            }
-            result += `<div class="gutter"><pre><code>${numbers}</code></pre></div>`;
-          }
-          result += `<div class="code">${pre}</div>`;
-          result += "</div></figure>";
-          return `${start}<hexoPostRenderCodeBlock>${result}</hexoPostRenderCodeBlock>${end}`;
-        } catch (e) {
-          console.error(e);
-          return `${start}<hexoPostRenderCodeBlock>${code}</hexoPostRenderCodeBlock>${end}`;
+        } catch (error) {
+          console.warn(error);
+          pre = `<pre><code>${code}</code></pre>`;
         }
+        result = `<figure class="shiki${args ? ` ${args}` : ""}">`;
+        result += "<div class='codeblock'>";
+        if (line_number) {
+          for (let i = 0, len = arr.length; i < len; i++) {
+            numbers += `<span class="line">${1 + i}</span><br>`;
+          }
+          result += `<div class="gutter"><pre>${numbers}</pre></div>`;
+        }
+        result += `<div class="code">${pre}</div>`;
+        result += "</div></figure>";
+        return `${start}<hexoPostRenderCodeBlock>${result}</hexoPostRenderCodeBlock>${end}`;
       });
     });
   });

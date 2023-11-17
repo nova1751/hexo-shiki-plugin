@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.20] - 2023-11-17
+
+### New Features
+
+- For the languages not supported by shiki,`hexo-shiki-plugin` will display it as plain text and print the `error` message in the console.
+- Add `Clipboard` API to the copy function for better compatibility.
+
 ## [1.0.19] - 2023-11-16
 
 ### Chore
