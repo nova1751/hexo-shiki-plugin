@@ -3,7 +3,7 @@ const stripIndent = require("strip-indent");
 const themes = require("./lib/themes");
 const { version } = require("./package.json");
 const codeMatch =
-  /^(?<start>\s*)(?<tick>~{3,}|`{3,})\ *(?<args>.*)\n(?<code>[\s\S]*?)^\s*\k<tick>(?<end>\s*)$/gm;
+  /(?<quote>[> ]*)(?<ul>(-|\d\.)?)(?<start>\s*)(?<tick>~{3,}|`{3,}) *(?<args>.*)\n(?<code>[\s\S]*?)\k<quote>\s*\k<tick>(?<end>\s*)$/gm;
 const config = hexo.config.shiki;
 if (!config) return;
 const {
@@ -77,8 +77,10 @@ return shiki
   .then((hl) => {
     hexo.extend.filter.register("before_post_render", (post) => {
       post.content = post.content.replace(codeMatch, (...argv) => {
-        let { start, end, args, code } = argv.pop();
+        let { quote, ul, start, end, args, code } = argv.pop();
         let result;
+        const match = new RegExp(`^${quote.trimEnd()}`, "gm");
+        code = code.replace(match, "");
         code = stripIndent(code.trimEnd());
         const arr = code.split("\n");
         let numbers = "";
@@ -102,7 +104,9 @@ return shiki
         }
         result += `<div class="code">${pre}</div>`;
         result += "</div></figure>";
-        return `${start}<hexoPostRenderCodeBlock>${result}</hexoPostRenderCodeBlock>${end}`;
+        return `${
+          quote + ul + start
+        }<hexoPostRenderCodeBlock>${result}</hexoPostRenderCodeBlock>${end}`;
       });
     });
   });
