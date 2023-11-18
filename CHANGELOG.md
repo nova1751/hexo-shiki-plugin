@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.22] - 2023-11-18
+
+### Bug Fixes
+
+- Ajust the github-light theme style.
+
 ## [1.0.21] - 2023-11-18
 
 ### Bug Fixes
