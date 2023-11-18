@@ -3,7 +3,7 @@ const stripIndent = require("strip-indent");
 const themes = require("./lib/themes");
 const { version } = require("./package.json");
 const codeMatch =
-  /(?<quote>[> ]*)(?<ul>(-|\d\.)?)(?<start>\s*)(?<tick>~{3,}|`{3,}) *(?<args>.*)\n(?<code>[\s\S]*?)\k<quote>\s*\k<tick>(?<end>\s*)$/gm;
+  /(?<quote>[> ]*)(?<ul>(-|\d+\.)?)(?<start>\s*)(?<tick>~{3,}|`{3,}) *(?<args>.*)\n(?<code>[\s\S]*?)\k<quote>\s*\k<tick>(?<end>\s*)$/gm;
 const config = hexo.config.shiki;
 if (!config) return;
 const {
