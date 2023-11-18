@@ -7,9 +7,9 @@
       alt="NPM Version"
   /></a>
   <a
-    href="https://github.com/nova1751/hexo-shiki-plugin/actions/workflows/publish.yml"
+    href="https://github.com/nova1751/hexo-shiki-plugin/actions/workflows/release.yml"
     ><img
-      src="https://img.shields.io/github/actions/workflow/status/nova1751/hexo-shiki-plugin/publish.yml?style=flat-square"
+      src="https://img.shields.io/github/actions/workflow/status/nova1751/hexo-shiki-plugin/release.yml?style=flat-square"
       alt="Build Status"
   /></a>
   <a

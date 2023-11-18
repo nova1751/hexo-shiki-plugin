@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.21] - 2023-11-18
+
+### Bug Fixes
+
+- Fix the code block display problem in the blockquote.
+
 ## [1.0.20] - 2023-11-17
 
 ### New Features
