@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.23] - 2023-11-30
+
+### Bug Fixes
+
+- Remove the tabindex attribute in codeblock.
+- Change dependency shiki to shiki-nova1751 to ajust the `vue` code highlight.
+
 ## [1.0.22] - 2023-11-18
 
 ### Bug Fixes

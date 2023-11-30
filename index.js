@@ -1,4 +1,4 @@
-const shiki = require("shiki");
+const shiki = require("shiki-nova1751");
 const stripIndent = require("strip-indent");
 const themes = require("./lib/themes");
 const { version } = require("./package.json");
@@ -88,7 +88,7 @@ return shiki
         try {
           pre = hl.codeToHtml(code, { lang: args });
           pre = pre.replace(/<pre[^>]*>/, (match) => {
-            return match.replace(/\s*style\s*=\s*"[^"]*"/, "");
+            return match.replace(/\s*style\s*=\s*"[^"]*"\s*tabindex="0"/, "");
           });
         } catch (error) {
           console.warn(error);

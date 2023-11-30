@@ -5,9 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  shiki:
-    specifier: ^0.14.5
-    version: 0.14.5
+  shiki-nova1751:
+    specifier: ^0.0.0
+    version: 0.0.0
   strip-indent:
     specifier: ^3.0.0
     version: 3.0.0
@@ -27,8 +27,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /shiki@0.14.5:
-    resolution: {integrity: sha512-1gCAYOcmCFONmErGTrS1fjzJLA7MGZmKzrBNX7apqSwhyITJg2O102uFzXUeBxNnEkDA9vHIKLyeKq0V083vIw==}
+  /shiki-nova1751@0.0.0:
+    resolution: {integrity: sha512-6RK+IVNm+j5vPYsRP8Yv9M7dETcmQGO2T6sR2TWF64LgqiIc/zAt+yX+5lhTWegQ36nh1/t+YViX8ypZJGqdJA==}
     dependencies:
       ansi-sequence-parser: 1.1.1
       jsonc-parser: 3.2.0
