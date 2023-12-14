@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.24] - 2023-12-14
+
+### Bug Fixes
+
+- Ajust the code font to adapt to the PC without consolas font.
+
+## [1.0.23] - 2023-11-30
+
+### Bug Fixes
+
+- Remove the tabindex attribute in codeblock.
+- Change dependency shiki to shiki-nova1751 to ajust the `vue` code highlight.
+
 ## [1.0.23] - 2023-11-30
 
 ### Bug Fixes

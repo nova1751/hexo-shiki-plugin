@@ -233,7 +233,8 @@ figure.shiki pre code {
 }
 figure.shiki .codeblock pre * {
   font-size: 1em;
-  font-family: consolas, 宋体, Menlo, pingfang sc, microsoft yahei, sans-serif !important;
+  font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono",
+    monospace, 宋体;
   overflow: auto !important;
   line-height: 1.6 !important;
 }
