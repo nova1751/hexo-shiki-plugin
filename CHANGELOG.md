@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.25] - 2023-1-25
+
+### Bug Fixes
+
+- Add cutom CDN url.
+
 ## [1.0.24] - 2023-12-14
 
 ### Bug Fixes
