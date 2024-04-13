@@ -25,7 +25,7 @@
   /></a>
 </p>
 
-> A code highlight plugin based on shiki,built for hexo.You can go to my [blog](https://refrain.cf) for preview.
+> A code highlight plugin based on shiki,built for hexo.You can go to my [blog](https://blog.refrain.site) for preview.
 
 ## Installation
 
