@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.25] - 2023-6-15
+
+### Style Update
+
+- Ajust the font style.
+
 ## [1.0.25] - 2023-1-25
 
 ### Bug Fixes
