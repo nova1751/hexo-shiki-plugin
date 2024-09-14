@@ -46,7 +46,6 @@ figure.shiki {
   height: 2.15em;
   background: var(--hltools-bg);
   color: var(--hltools-color);
-  font-size: 1em;
   user-select: none;
 }
 figure.shiki .shiki-tools .expand {
@@ -78,7 +77,6 @@ figure.shiki .shiki-tools .code-lang {
   position: absolute;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.15em;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -130,7 +128,6 @@ figure.shiki .shiki-tools:after {
   background: var(--hlexpand-bg);
   justify-content: center;
   align-items: center;
-  font-size: 1em;
   cursor: pointer;
 }
 @-moz-keyframes code-expand-key {
@@ -232,7 +229,6 @@ figure.shiki pre code {
   background: none !important;
 }
 figure.shiki .codeblock pre * {
-  font-size: 1em;
   font-family: Consolas, "Fira Code", "Fira Mono", Menlo, "DejaVu Sans Mono",
     monospace, 宋体;
   overflow: auto !important;
