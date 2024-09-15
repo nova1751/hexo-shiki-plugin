@@ -1,12 +1,18 @@
 # Changelog
 
-## [1.0.26] - 2023-6-15
+## [1.0.27] - 2024-6-15
+
+### Style Update
+
+- Ajust the text style. @noraj
+
+## [1.0.26] - 2024-6-15
 
 ### Style Update
 
 - Ajust the font style.
 
-## [1.0.25] - 2023-1-25
+## [1.0.25] - 2024-1-25
 
 ### Bug Fixes
 

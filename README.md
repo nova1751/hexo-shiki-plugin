@@ -25,7 +25,7 @@
   /></a>
 </p>
 
-> A code highlight plugin based on shiki,built for hexo.You can go to my [blog](https://blog.refrain.site/posts/3c94855e/#%E8%A1%A8%E5%8D%95%E8%BE%93%E5%85%A5%E7%BB%91%E5%AE%9A) for preview.
+> A code highlight plugin based on shiki,built for hexo.You can go to my [blog](https://blog.refrain.site) for preview.
 
 ## Installation
 
@@ -81,13 +81,13 @@ shiki:
   highlight_height_limit: 360 # code-block max height,unit: px
   is_highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
   copy: # copy message
-    success: "Copy Success"
-    error: "Copy Error"
-    no_support: "Browser Not Support"
+    success: 'Copy Success'
+    error: 'Copy Error'
+    no_support: 'Browser Not Support'
 ```
 
 > [!NOTE]
-> Since shiki support a lot of beautiful themes,you can add your own cutom css files to cusomize your codeblock style,here is a example:
+> Since shiki support a lot of beautiful themes,you can add your own cutom css files to cusomize your codeblock style,here is an example:
 
 ```css
 :root {
