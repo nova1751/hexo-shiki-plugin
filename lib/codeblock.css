@@ -236,7 +236,7 @@ figure.shiki .codeblock pre * {
   font-family: Consolas, "Fira Code", "Fira Mono", Menlo, "DejaVu Sans Mono",
     monospace, 宋体;
   overflow: auto !important;
-  line-height: 1.6 !important;
+  line-height: 1.6;
 }
 figure.shiki .code pre {
   padding-right: 10px !important;
