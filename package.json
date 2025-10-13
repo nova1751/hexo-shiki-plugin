@@ -26,6 +26,6 @@
   ],
   "dependencies": {
     "shiki-nova1751": "^0.0.0",
-    "strip-indent": "^3.0.0"
+    "strip-indent": "^4.1.1"
   }
 }
