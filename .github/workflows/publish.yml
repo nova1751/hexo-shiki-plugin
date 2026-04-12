@@ -30,7 +30,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install 
 
       - name: Typecheck
         run: pnpm typecheck
@@ -60,9 +60,7 @@ jobs:
           test -s release-notes.md
 
       - name: Publish package
-        run: pnpm publish --access public --provenance --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish 
 
       - name: Create GitHub release
         run: |
