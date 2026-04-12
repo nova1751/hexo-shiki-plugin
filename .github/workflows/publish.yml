@@ -9,6 +9,7 @@ concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false
 
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -25,7 +26,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6.1.0
         with:
-          node-version: 22.12.0
+          node-version: 24.14.1
           registry-url: https://registry.npmjs.org
           cache: pnpm
 
