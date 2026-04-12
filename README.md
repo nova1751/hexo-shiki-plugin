@@ -7,10 +7,10 @@
       alt="NPM Version"
   /></a>
   <a
-    href="https://github.com/nova1751/hexo-shiki-plugin/actions/workflows/release.yml"
+    href="https://github.com/nova1751/hexo-shiki-plugin/actions/workflows/ci.yml"
     ><img
-      src="https://img.shields.io/github/actions/workflow/status/nova1751/hexo-shiki-plugin/release.yml?style=flat-square"
-      alt="Build Status"
+      src="https://img.shields.io/github/actions/workflow/status/nova1751/hexo-shiki-plugin/ci.yml?style=flat-square"
+      alt="CI Status"
   /></a>
   <a
     href="https://github.com/hexojs/hexo/releases"
@@ -27,11 +27,29 @@
 
 > A code highlight plugin based on shiki,built for hexo.You can go to my [blog](https://blog.refrain.site) for preview.
 
+## Development
+
+This repository now follows a standard Vite-based TypeScript library layout:
+
+- `src/`: plugin source, browser runtime, theme definitions and shared helpers
+- `tests/`: Vitest unit tests
+- `vite.config.ts`: Vite library mode build for both the Hexo entry and browser assets
+- `vitest.config.ts`: Vitest configuration
+
+### Scripts
+
+```bash
+pnpm install
+pnpm typecheck
+pnpm test:run
+pnpm build
+```
+
 ## Installation
 
 1. Intall the plugin.
    ```bash
-   yarn add hexo-shiki-plugin
+   pnpm add hexo-shiki-plugin
    ```
 2. Setup config.
    ```yml
@@ -76,6 +94,7 @@ shiki:
   theme: github-light # highlight-theme
   line_number: true # whether to show the line_number
   beautify: false # whether to add highlight tool true or false
+  colorized_brackets: true # colorize nested brackets via @shikijs/colorized-brackets
   highlight_copy: true # copy button
   highlight_lang: false # show the code language
   highlight_height_limit: 360 # code-block max height,unit: px
@@ -84,6 +103,15 @@ shiki:
     success: 'Copy Success'
     error: 'Copy Error'
     no_support: 'Browser Not Support'
+```
+
+If you need custom bracket settings, `colorized_brackets` also accepts the transformer options object directly:
+
+```yml
+shiki:
+  theme: dark-plus
+  colorized_brackets:
+    explicitTrigger: false
 ```
 
 > [!NOTE]
@@ -105,3 +133,13 @@ shiki:
   );
 }
 ```
+
+## Build Output
+
+The published package keeps the legacy runtime asset paths while building everything through Vite:
+
+- `dist/index.js`
+- `dist/index.cjs`
+- `dist/index.d.ts`
+- `dist/lib/codeblock.js`
+- `dist/lib/codeblock.css`

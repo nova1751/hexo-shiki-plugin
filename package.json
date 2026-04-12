@@ -4,9 +4,39 @@
   "description": "A beautiful hexo code block highlight plugin based on shiki",
   "author": "nova1751",
   "license": "MIT",
-  "main": "index.js",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./lib/codeblock.css": "./dist/lib/codeblock.css",
+    "./lib/codeblock.js": "./dist/lib/codeblock.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "packageManager": "pnpm@10.8.0",
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build && vite build --config vite.client.config.ts",
+    "format:check": "biome format .",
+    "format": "biome format --write .",
+    "prepare": "husky",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}": "biome format --write"
   },
   "repository": {
     "type": "git",
@@ -19,13 +49,25 @@
   "keywords": [
     "hexo",
     "shiki",
+    "typescript",
+    "vite",
+    "vitest",
     "code",
     "highlight",
     "butterfly",
     "hexo-theme-butterfly"
   ],
-  "dependencies": {
-    "shiki-nova1751": "^0.0.0",
-    "strip-indent": "^3.0.0"
+  "devDependencies": {
+    "@shikijs/colorized-brackets": "^4.0.2",
+    "shiki": "^4.0.2",
+    "strip-indent": "^4.1.1",
+    "@biomejs/biome": "^2.4.9",
+    "@types/node": "^24.5.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.0",
+    "typescript": "^5.9.2",
+    "unplugin-dts": "^1.0.0-beta.6",
+    "vite": "^8.0.8",
+    "vitest": "^3.2.4"
   }
 }

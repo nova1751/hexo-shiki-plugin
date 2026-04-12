@@ -116,8 +116,12 @@ figure.shiki .shiki-tools:after {
   height: 12px;
   border-radius: 50%;
   background: #fc625d;
-  -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
-  box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+  -webkit-box-shadow:
+    20px 0 #fdbc40,
+    40px 0 #35cd4b;
+  box-shadow:
+    20px 0 #fdbc40,
+    40px 0 #35cd4b;
   content: " ";
 }
 /* bottom toolbar */
@@ -233,8 +237,9 @@ figure.shiki pre code {
 }
 figure.shiki .codeblock pre * {
   font-size: 1em;
-  font-family: Consolas, "Fira Code", "Fira Mono", Menlo, "DejaVu Sans Mono",
-    monospace, 宋体;
+  font-family:
+    Consolas, "Fira Code", "Fira Mono", Menlo, "DejaVu Sans Mono", monospace,
+    sans-serif;
   overflow: auto !important;
   line-height: 1.6;
 }
@@ -245,7 +250,7 @@ figure.shiki .code pre {
   background: none !important;
 }
 .code-expand-btn:not(.expand-done) ~ pre,
-.code-expand-btn:not(.expand-done) ~ *pre {
+.code-expand-btn:not(.expand-done) ~ * pre {
   overflow: hidden;
 }
 .code-expand-btn.expand-done + pre,
