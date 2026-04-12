@@ -58,13 +58,13 @@
     "hexo-theme-butterfly"
   ],
   "devDependencies": {
+    "@biomejs/biome": "^2.4.11",
     "@shikijs/colorized-brackets": "^4.0.2",
-    "shiki": "^4.0.2",
-    "strip-indent": "^4.1.1",
-    "@biomejs/biome": "^2.4.9",
     "@types/node": "^24.5.2",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.0",
+    "shiki": "^4.0.2",
+    "strip-indent": "^4.1.1",
     "typescript": "^5.9.2",
     "unplugin-dts": "^1.0.0-beta.6",
     "vite": "^8.0.8",
