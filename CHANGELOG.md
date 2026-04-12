@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.28] - 2026-4-12
+
+- Refractored to standard ts project.
+- Update shiki to latest version to support more features.
+- Support VSCode-style colorized brackets by using `@shikijs/colorized-brackets` plugin.
+
 ## [1.0.27] - 2024-6-15
 
 ### Style Update
