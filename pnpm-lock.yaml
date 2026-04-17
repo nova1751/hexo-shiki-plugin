@@ -30,11 +30,11 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1
       typescript:
-        specifier: ^5.9.2
-        version: 5.9.3
+        specifier: ^6.0.3
+        version: 6.0.3
       unplugin-dts:
         specifier: ^1.0.0-beta.6
-        version: 1.0.0-beta.6(@microsoft/api-extractor@7.57.7(@types/node@24.12.0))(esbuild@0.27.4)(rollup@4.60.0)(typescript@5.9.3)(vite@8.0.8(@types/node@24.12.0)(esbuild@0.27.4)(yaml@2.8.3))
+        version: 1.0.0-beta.6(@microsoft/api-extractor@7.57.7(@types/node@24.12.0))(esbuild@0.27.4)(rollup@4.60.0)(typescript@6.0.3)(vite@8.0.8(@types/node@24.12.0)(esbuild@0.27.4)(yaml@2.8.3))
       vite:
         specifier: ^8.0.8
         version: 8.0.8(@types/node@24.12.0)(esbuild@0.27.4)(yaml@2.8.3)
@@ -1276,8 +1276,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2620,7 +2620,7 @@ snapshots:
   typescript@5.8.2:
     optional: true
 
-  typescript@5.9.3: {}
+  typescript@6.0.3: {}
 
   ufo@1.6.3: {}
 
@@ -2652,7 +2652,7 @@ snapshots:
   universalify@2.0.1:
     optional: true
 
-  unplugin-dts@1.0.0-beta.6(@microsoft/api-extractor@7.57.7(@types/node@24.12.0))(esbuild@0.27.4)(rollup@4.60.0)(typescript@5.9.3)(vite@8.0.8(@types/node@24.12.0)(esbuild@0.27.4)(yaml@2.8.3)):
+  unplugin-dts@1.0.0-beta.6(@microsoft/api-extractor@7.57.7(@types/node@24.12.0))(esbuild@0.27.4)(rollup@4.60.0)(typescript@6.0.3)(vite@8.0.8(@types/node@24.12.0)(esbuild@0.27.4)(yaml@2.8.3)):
     dependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.60.0)
       '@volar/typescript': 2.4.28
@@ -2661,7 +2661,7 @@ snapshots:
       kolorist: 1.8.0
       local-pkg: 1.1.2
       magic-string: 0.30.21
-      typescript: 5.9.3
+      typescript: 6.0.3
       unplugin: 2.3.11
     optionalDependencies:
       '@microsoft/api-extractor': 7.57.7(@types/node@24.12.0)
