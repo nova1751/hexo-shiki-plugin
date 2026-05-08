@@ -60,7 +60,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.4.11",
     "@shikijs/colorized-brackets": "^4.0.2",
-    "@types/node": "^24.5.2",
+    "@types/node": "^25.6.2",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.0",
     "shiki": "^4.0.2",
