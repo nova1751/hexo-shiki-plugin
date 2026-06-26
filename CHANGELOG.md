@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.29] - 2026-6-26
+
+### New Features
+
+- Add `skip_languages` to bypass shiki highlighting for configured fenced code languages.
+- Convert skipped Mermaid fences into Butterfly-compatible `.mermaid-wrap` blocks.
+
+### Bug Fixes
+
+- Inject runtime scripts before the real `</body>` tag without matching `</body>` strings inside scripts.
+
 ## [1.0.28] - 2026-4-12
 
 - Refractored to standard ts project.
