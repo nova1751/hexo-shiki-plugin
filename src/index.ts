@@ -6,6 +6,7 @@ import { renderMarkdownCodeBlocks } from "./core/render";
 import {
   buildHeightLimitStyle,
   buildRuntimeConfigScript,
+  injectBeforeBodyEnd,
   PACKAGE_CDN_ROOT,
 } from "./core/runtime";
 import { resolveThemeStyle } from "./themes";
@@ -60,6 +61,7 @@ export async function initializePlugin(hexo: HexoGlobal): Promise<void> {
   const css = hexo.extend.helper.get("css").bind(hexo);
   const js = hexo.extend.helper.get("js").bind(hexo);
   const highlightTheme = config.theme ?? "one-dark-pro";
+  const bodyEndHandlers: Array<() => string> = [];
 
   hexo.extend.injector.register("head_end", () => {
     return css(config.cssCdn ?? `${PACKAGE_CDN_ROOT}/lib/codeblock.css`);
@@ -78,19 +80,24 @@ export async function initializePlugin(hexo: HexoGlobal): Promise<void> {
   }
 
   if (config.beautify) {
-    hexo.extend.injector.register("body_end", () => {
-      return js(config.jsCdn ?? `${PACKAGE_CDN_ROOT}/lib/codeblock.js`);
-    });
+    bodyEndHandlers.push(() =>
+      js(config.jsCdn ?? `${PACKAGE_CDN_ROOT}/lib/codeblock.js`),
+    );
   }
 
-  hexo.extend.injector.register("body_end", () => {
-    return buildRuntimeConfigScript(version, config);
+  bodyEndHandlers.push(() => buildRuntimeConfigScript(version, config));
+
+  hexo.extend.filter.register("after_render:html", (html: string) => {
+    return injectBeforeBodyEnd(
+      html,
+      bodyEndHandlers.map((fn) => fn()).join(""),
+    );
   });
 
   hexo.extend.filter.register("before_post_render", async (post: HexoPost) => {
     post.content = await renderMarkdownCodeBlocks(
       post.content,
-      { lineNumber: config.lineNumber },
+      { lineNumber: config.lineNumber, skipLanguages: config.skipLanguages },
       {
         codeToHtml(source, { lang }) {
           return highlightCode(

@@ -13,6 +13,7 @@ export interface ShikiPluginConfig {
   highlight_height_limit?: number;
   is_highlight_shrink?: boolean;
   colorized_brackets?: boolean | ColorizedBracketsOptions;
+  skip_languages?: string[];
   css_cdn?: string;
   js_cdn?: string;
   copy?: {
@@ -31,6 +32,7 @@ export interface ResolvedShikiPluginConfig {
   highlightHeightLimit?: number;
   isHighlightShrink?: boolean;
   colorizedBrackets?: boolean | ColorizedBracketsOptions;
+  skipLanguages: string[];
   cssCdn?: string;
   jsCdn?: string;
   copy: {
@@ -38,6 +40,20 @@ export interface ResolvedShikiPluginConfig {
     error: string;
     noSupport: string;
   };
+}
+
+function normalizeLanguageList(languages?: string[]): string[] {
+  if (!Array.isArray(languages)) {
+    return [];
+  }
+
+  return Array.from(
+    new Set(
+      languages
+        .map((language) => language.trim().toLowerCase())
+        .filter(Boolean),
+    ),
+  );
 }
 
 export function resolvePluginConfig(
@@ -56,6 +72,7 @@ export function resolvePluginConfig(
     highlightHeightLimit: config.highlight_height_limit,
     isHighlightShrink: config.is_highlight_shrink,
     colorizedBrackets: config.colorized_brackets,
+    skipLanguages: normalizeLanguageList(config.skip_languages),
     cssCdn: config.css_cdn,
     jsCdn: config.js_cdn,
     copy: {

@@ -20,6 +20,10 @@ export interface HexoGlobal {
         name: "before_post_render",
         handler: (post: HexoPost) => void | Promise<void>,
       ): void;
+      register(
+        name: "after_render:html",
+        handler: (html: string) => string | Promise<string>,
+      ): void;
     };
   };
 }

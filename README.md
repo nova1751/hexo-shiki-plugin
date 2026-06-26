@@ -99,11 +99,15 @@ shiki:
   highlight_lang: false # show the code language
   highlight_height_limit: 360 # code-block max height,unit: px
   is_highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
+  skip_languages: # languages that should not be highlighted by shiki
+    - mermaid
   copy: # copy message
     success: 'Copy Success'
     error: 'Copy Error'
     no_support: 'Browser Not Support'
 ```
+
+Use `skip_languages` for fenced code blocks that should be handled by Hexo, your theme, or another plugin instead of shiki. For example, adding `mermaid` converts Mermaid fences into Butterfly-compatible `.mermaid-wrap` blocks so Butterfly's Mermaid renderer can render them.
 
 If you need custom bracket settings, `colorized_brackets` also accepts the transformer options object directly:
 

@@ -12,6 +12,7 @@ export interface HtmlHighlighter {
 
 export interface RenderMarkdownOptions {
   lineNumber: boolean;
+  skipLanguages?: string[];
 }
 
 function escapeHtml(value: string): string {
@@ -36,6 +37,29 @@ function stripHighlighterPreAttributes(html: string): string {
 function resolveLanguage(args: string): string | undefined {
   const [language] = args.trim().split(/\s+/, 1);
   return language || undefined;
+}
+
+function shouldSkipHighlight(
+  language: string | undefined,
+  skipLanguages: string[] | undefined,
+): boolean {
+  if (!language || !skipLanguages?.length) {
+    return false;
+  }
+
+  return skipLanguages.includes(language.toLowerCase());
+}
+
+function renderSkippedCodeBlock(language: string | undefined, code: string) {
+  if (language?.toLowerCase() === "mermaid") {
+    return `<div class="mermaid-wrap"><pre class="mermaid-src" hidden>\n${escapeHtml(code)}\n</pre></div>`;
+  }
+
+  return null;
+}
+
+function protectRenderedCodeBlock(html: string) {
+  return `<hexoPostRenderCodeBlock>${html}</hexoPostRenderCodeBlock>`;
 }
 
 export async function renderMarkdownCodeBlocks(
@@ -79,6 +103,15 @@ export async function renderMarkdownCodeBlocks(
     const language = resolveLanguage(args);
     let html = "";
 
+    if (shouldSkipHighlight(language, options.skipLanguages)) {
+      const skippedHtml = renderSkippedCodeBlock(language, code);
+      output += skippedHtml
+        ? `${quote}${ul}${start}${protectRenderedCodeBlock(skippedHtml)}${end}`
+        : match[0];
+      lastIndex = matchIndex + match[0].length;
+      continue;
+    }
+
     try {
       html = stripHighlighterPreAttributes(
         await highlighter.codeToHtml(code, { lang: language }),
@@ -101,7 +134,7 @@ export async function renderMarkdownCodeBlocks(
     codeBlockHtml += `<div class="code">${html}</div>`;
     codeBlockHtml += "</div></figure>";
 
-    output += `${quote}${ul}${start}<hexoPostRenderCodeBlock>${codeBlockHtml}</hexoPostRenderCodeBlock>${end}`;
+    output += `${quote}${ul}${start}${protectRenderedCodeBlock(codeBlockHtml)}${end}`;
     lastIndex = matchIndex + match[0].length;
   }
 
