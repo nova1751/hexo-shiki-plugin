@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.30] - 2026-6-29
+
+### Bug Fixes
+
+- Add scoped Font Awesome 7 fallbacks for generated code block toolbar icons.
+- Stabilize code block toolbar icon layout by centering fixed-size icon boxes and rotating only icon pseudo-elements.
+
 ## [1.0.29] - 2026-6-26
 
 ### New Features

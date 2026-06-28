@@ -51,9 +51,21 @@ figure.shiki {
 }
 figure.shiki .shiki-tools .expand {
   right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2.1em;
   position: absolute;
-  padding: 0.57em 0.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
   cursor: pointer;
+}
+
+figure.shiki .shiki-tools .expand::before {
+  display: block;
+  transform-origin: center;
   -webkit-transition: -webkit-transform 0.3s;
   -moz-transition: -moz-transform 0.3s;
   -o-transition: -o-transform 0.3s;
@@ -62,11 +74,13 @@ figure.shiki .shiki-tools .expand {
 }
 
 figure.shiki .shiki-tools .expand.closed {
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+figure.shiki .shiki-tools .expand.closed::before {
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);
@@ -98,13 +112,23 @@ figure.shiki .shiki-tools .expand ~ .copy-notice {
 
 figure.shiki .shiki-tools .expand ~ .copy-button {
   right: 2.1em;
+  top: 0;
+  bottom: 0;
+  width: 1.35em;
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
   cursor: pointer;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
   -o-transition: color 0.2s;
   -ms-transition: color 0.2s;
   transition: color 0.2s;
+}
+figure.shiki .shiki-tools .copy-button::before {
+  display: block;
 }
 .shiki-tools .copy-button:hover {
   color: #49b1f5;
@@ -131,10 +155,12 @@ figure.shiki .shiki-tools:after {
   bottom: 0;
   z-index: 10;
   width: 100%;
+  height: 1.8em;
   background: var(--hlexpand-bg);
   justify-content: center;
   align-items: center;
   font-size: 1em;
+  line-height: 1;
   cursor: pointer;
 }
 @-moz-keyframes code-expand-key {
@@ -193,15 +219,56 @@ figure.shiki .shiki-tools:after {
   }
 }
 .code-expand-btn i {
-  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
   color: var(--hlnumber-color);
+  line-height: 1;
   -webkit-animation: code-expand-key 1.2s infinite;
   -moz-animation: code-expand-key 1.2s infinite;
   -o-animation: code-expand-key 1.2s infinite;
   -ms-animation: code-expand-key 1.2s infinite;
   animation: code-expand-key 1.2s infinite;
 }
-.code-expand-btn.expand-done > i {
+figure.shiki .code-expand-btn i::before {
+  display: block;
+  transform-origin: center;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  -ms-transition: -ms-transform 0.3s;
+  transition: transform 0.3s;
+}
+/* Font Awesome 7 uses CSS variables for icon content and dropped some old aliases. */
+figure.shiki .shiki-tools .fa-angle-down {
+  --fa: "\f107";
+}
+figure.shiki .shiki-tools .fa-angle-down::before {
+  content: "\f107";
+}
+figure.shiki .shiki-tools .fa-paste {
+  --fa: "\f0ea";
+}
+figure.shiki .shiki-tools .fa-paste::before {
+  content: "\f0ea";
+}
+figure.shiki .code-expand-btn .fa-angle-double-down {
+  --fa: "\f103";
+}
+figure.shiki .code-expand-btn .fa-angle-double-down::before {
+  content: "\f103";
+}
+figure.shiki .code-expand-btn.expand-done > i {
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+figure.shiki .code-expand-btn.expand-done > i::before {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -o-transform: rotate(180deg);
