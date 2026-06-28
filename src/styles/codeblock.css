@@ -100,9 +100,17 @@ figure.shiki .shiki-tools .code-lang {
 }
 
 figure.shiki .shiki-tools .expand ~ .copy-notice {
-  right: 3.45em;
+  right: 3.8em;
+  top: 0;
+  bottom: 0;
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   opacity: 0;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
   -webkit-transition: opacity 0.4s;
   -moz-transition: opacity 0.4s;
   -o-transition: opacity 0.4s;

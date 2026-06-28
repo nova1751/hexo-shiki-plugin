@@ -30,4 +30,10 @@ describe("codeblock styles", () => {
       /figure\.shiki \.code-expand-btn\.expand-done > i::before \{[\s\S]*transform: rotate\(180deg\);/,
     );
   });
+
+  it("keeps the copy notice separated from the copy icon", () => {
+    expect(css).toMatch(
+      /figure\.shiki \.shiki-tools \.expand ~ \.copy-notice \{[\s\S]*right: 3\.8em;[\s\S]*display: flex;[\s\S]*align-items: center;[\s\S]*line-height: 1;/,
+    );
+  });
 });
