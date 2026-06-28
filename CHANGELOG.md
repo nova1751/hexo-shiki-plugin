@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.32] - 2026-6-29
+
+### Bug Fixes
+
+- Fix CDN asset paths to use the built dist bundle files for stylesheet and runtime script injection.
+
 ## [1.0.31] - 2026-6-29
 
 ### Bug Fixes

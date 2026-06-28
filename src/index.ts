@@ -64,7 +64,7 @@ export async function initializePlugin(hexo: HexoGlobal): Promise<void> {
   const bodyEndHandlers: Array<() => string> = [];
 
   hexo.extend.injector.register("head_end", () => {
-    return css(config.cssCdn ?? `${PACKAGE_CDN_ROOT}/lib/codeblock.css`);
+    return css(config.cssCdn ?? `${PACKAGE_CDN_ROOT}/dist/lib/codeblock.css`);
   });
 
   hexo.extend.injector.register("head_end", () => {
@@ -81,7 +81,7 @@ export async function initializePlugin(hexo: HexoGlobal): Promise<void> {
 
   if (config.beautify) {
     bodyEndHandlers.push(() =>
-      js(config.jsCdn ?? `${PACKAGE_CDN_ROOT}/lib/codeblock.js`),
+      js(config.jsCdn ?? `${PACKAGE_CDN_ROOT}/dist/lib/codeblock.js`),
     );
   }
 
