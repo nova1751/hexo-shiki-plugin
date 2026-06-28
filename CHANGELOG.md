@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.31] - 2026-6-29
+
+### Bug Fixes
+
+- Move the copy notice away from the copy toolbar icon and vertically center it to avoid overlap.
+
 ## [1.0.30] - 2026-6-29
 
 ### Bug Fixes
