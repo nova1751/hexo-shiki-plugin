@@ -6,7 +6,7 @@ const CODE_BLOCK_PATTERN =
 export interface HtmlHighlighter {
   codeToHtml(
     code: string,
-    options: { lang?: string },
+    options: { lang?: string; meta?: string },
   ): Promise<string> | string;
 }
 
@@ -34,9 +34,17 @@ function stripHighlighterPreAttributes(html: string): string {
   });
 }
 
-function resolveLanguage(args: string): string | undefined {
-  const [language] = args.trim().split(/\s+/, 1);
-  return language || undefined;
+interface CodeBlockArgs {
+  language: string | undefined;
+  meta: string | undefined;
+}
+
+function resolveCodeBlockArgs(args: string): CodeBlockArgs {
+  const trimmed = args.trim();
+  const parts = trimmed.split(/\s+/);
+  const language = parts[0] || undefined;
+  const meta = parts.length > 1 ? parts.slice(1).join(" ") : undefined;
+  return { language, meta };
 }
 
 function shouldSkipHighlight(
@@ -100,7 +108,7 @@ export async function renderMarkdownCodeBlocks(
       ).trimEnd(),
     );
     const lineCount = code.length === 0 ? 1 : code.split("\n").length;
-    const language = resolveLanguage(args);
+    const { language, meta } = resolveCodeBlockArgs(args);
     let html = "";
 
     if (shouldSkipHighlight(language, options.skipLanguages)) {
@@ -114,14 +122,18 @@ export async function renderMarkdownCodeBlocks(
 
     try {
       html = stripHighlighterPreAttributes(
-        await highlighter.codeToHtml(code, { lang: language }),
+        await highlighter.codeToHtml(code, { lang: language, meta }),
       );
     } catch (error) {
       console.warn(error);
       html = `<pre><code>${escapeHtml(code)}</code></pre>`;
     }
 
-    let codeBlockHtml = `<figure class="shiki${language ? ` ${language}` : ""}">`;
+    const metaAttr = meta ? ` data-meta="${escapeHtml(meta)}"` : "";
+    let codeBlockHtml = `<figure class="shiki${language ? ` ${language}` : ""}"${metaAttr}>`;
+    if (meta) {
+      codeBlockHtml += `<div class="code-meta">${escapeHtml(meta)}</div>`;
+    }
     codeBlockHtml += "<div class='codeblock'>";
 
     if (options.lineNumber) {

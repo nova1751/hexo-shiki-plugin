@@ -11,6 +11,15 @@ figure.shiki div.codeblock::-webkit-scrollbar {
 figure.shiki .shiki-tools.closed ~ * {
   display: none;
 }
+figure.shiki .code-meta {
+  padding: 2px 14px;
+  font-size: 0.85em;
+  font-family: Consolas, "Fira Code", "Fira Mono", Menlo, "DejaVu Sans Mono", monospace, sans-serif;
+  background: var(--hltools-bg);
+  color: var(--hltools-color);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+  user-select: none;
+}
 figure.shiki div.codeblock {
   margin: 0;
 }

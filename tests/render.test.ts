@@ -76,6 +76,41 @@ describe("renderMarkdownCodeBlocks", () => {
     expect(highlighter).not.toHaveBeenCalled();
   });
 
+  it("renders fenced blocks with meta / file path info", async () => {
+    const highlighter = vi.fn().mockResolvedValue("<pre><code>highlighted</code></pre>");
+
+    const html = await renderMarkdownCodeBlocks(
+      "```js /etc/scripts/ps.js\nconst value = 1;\n```\n",
+      { lineNumber: false },
+      { codeToHtml: highlighter },
+    );
+
+    expect(html).toContain('<div class="code-meta">/etc/scripts/ps.js</div>');
+    expect(html).toContain('data-meta="/etc/scripts/ps.js"');
+    expect(html).toContain('<figure class="shiki js"');
+    expect(highlighter).toHaveBeenCalledWith("const value = 1;", {
+      lang: "js",
+      meta: "/etc/scripts/ps.js",
+    });
+  });
+
+  it("does not render code-meta when no path is given", async () => {
+    const highlighter = vi.fn().mockResolvedValue("<pre><code>highlighted</code></pre>");
+
+    const html = await renderMarkdownCodeBlocks(
+      "```js\nconst value = 1;\n```\n",
+      { lineNumber: false },
+      { codeToHtml: highlighter },
+    );
+
+    expect(html).not.toContain("code-meta");
+    expect(html).not.toContain("data-meta");
+    expect(highlighter).toHaveBeenCalledWith("const value = 1;", {
+      lang: "js",
+      meta: undefined,
+    });
+  });
+
   it("leaves other skipped languages for downstream renderers", async () => {
     const markdown = "```dot\ndigraph G { A -> B }\n```\n";
     const highlighter = vi
