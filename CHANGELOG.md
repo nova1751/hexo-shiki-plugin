@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.33] - 2026-7-21
+
+### New Features
+
+- Support optional extra info after fenced code block languages and forward it to Shiki as code metadata.
+- Display code metadata inline beside the language label with compact monospace styling and overflow handling.
+
 ## [1.0.32] - 2026-6-29
 
 ### Bug Fixes
