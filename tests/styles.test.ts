@@ -36,4 +36,13 @@ describe("codeblock styles", () => {
       /figure\.shiki \.shiki-tools \.expand ~ \.copy-notice \{[\s\S]*right: 3\.8em;[\s\S]*display: flex;[\s\S]*align-items: center;[\s\S]*line-height: 1;/,
     );
   });
+
+  it("keeps code metadata on the toolbar next to the language", () => {
+    expect(css).toMatch(
+      /figure\.shiki \.shiki-tools \.code-meta \{[\s\S]*flex: 1 1 auto;[\s\S]*white-space: nowrap;[\s\S]*font-size: 1rem;[\s\S]*Consolas/,
+    );
+    expect(css).toMatch(
+      /figure\.shiki \.shiki-tools \.code-lang \{[\s\S]*margin-left: 75px;/,
+    );
+  });
 });

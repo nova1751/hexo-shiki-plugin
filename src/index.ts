@@ -26,6 +26,7 @@ async function highlightCode(
   theme: string,
   colorizedBrackets?: ResolvedShikiPluginConfig["colorizedBrackets"],
   lang?: string,
+  meta?: string,
 ): Promise<string> {
   const transformers = colorizedBrackets
     ? [
@@ -34,14 +35,20 @@ async function highlightCode(
         ),
       ]
     : undefined;
-  const options = {
+  const options: Record<string, unknown> = {
     lang: lang ?? "text",
     theme,
     transformers,
-  } as unknown as ShikiCodeToHtmlOptions;
+  };
+
+  if (meta) {
+    options.meta = { __raw: meta };
+  }
+
+  const optionsTyped = options as unknown as ShikiCodeToHtmlOptions;
 
   try {
-    return await codeToHtml(code, options);
+    return await codeToHtml(code, optionsTyped);
   } catch {
     return codeToHtml(code, {
       lang: "text",
@@ -99,12 +106,13 @@ export async function initializePlugin(hexo: HexoGlobal): Promise<void> {
       post.content,
       { lineNumber: config.lineNumber, skipLanguages: config.skipLanguages },
       {
-        codeToHtml(source, { lang }) {
+        codeToHtml(source, { lang, meta }) {
           return highlightCode(
             source,
             highlightTheme,
             config.colorizedBrackets,
             lang,
+            meta,
           );
         },
       },

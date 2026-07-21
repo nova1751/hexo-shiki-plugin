@@ -11,6 +11,26 @@ figure.shiki div.codeblock::-webkit-scrollbar {
 figure.shiki .shiki-tools.closed ~ * {
   display: none;
 }
+figure.shiki .shiki-tools .code-lang,
+figure.shiki .shiki-tools .code-meta {
+  font-weight: 700;
+  line-height: 1;
+  color: var(--hltools-color);
+}
+figure.shiki .shiki-tools .code-meta {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0 5em 0 0.75em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-family:
+    Consolas, "Fira Code", "Fira Mono", Menlo, "DejaVu Sans Mono", monospace,
+    sans-serif;
+  opacity: 0.78;
+  user-select: none;
+}
 figure.shiki div.codeblock {
   margin: 0;
 }
@@ -88,10 +108,9 @@ figure.shiki .shiki-tools .expand.closed::before {
   transform: rotate(90deg);
 }
 figure.shiki .shiki-tools .code-lang {
-  left: 75px;
-  position: absolute;
+  flex: 0 0 auto;
+  margin-left: 75px;
   text-transform: uppercase;
-  font-weight: 700;
   font-size: 1.15em;
   -webkit-user-select: none;
   -moz-user-select: none;

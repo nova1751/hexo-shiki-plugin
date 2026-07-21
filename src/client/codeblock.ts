@@ -32,8 +32,16 @@ function addHighlightTool(): void {
     highlightCopy || highlightLang || isHighlightShrink !== undefined;
   const highlightedFigures =
     document.querySelectorAll<HTMLElement>("figure.shiki");
+  const hasMeta = Array.from(highlightedFigures).some(
+    (item) => item.dataset.meta,
+  );
 
-  if (!((isShowTool || highlightHeightLimit) && highlightedFigures.length)) {
+  if (
+    !(
+      (isShowTool || hasMeta || highlightHeightLimit) &&
+      highlightedFigures.length
+    )
+  ) {
     return;
   }
 
@@ -162,12 +170,30 @@ function addHighlightTool(): void {
 
   function createElements(languageMarkup: string, item: HTMLElement): void {
     const fragment = document.createDocumentFragment();
+    const meta = item.dataset.meta;
 
-    if (isShowTool) {
+    if (isShowTool || meta) {
       const highlightTools = document.createElement("div");
       highlightTools.className = `shiki-tools ${highlightShrinkClass}`;
       highlightTools.innerHTML =
         highlightShrinkElement + languageMarkup + highlightCopyElement;
+
+      if (meta) {
+        const metaElement = document.createElement("div");
+        metaElement.className = "code-meta";
+        metaElement.textContent = meta;
+        const languageElement = highlightTools.querySelector(".code-lang");
+        const copyNotice = highlightTools.querySelector(".copy-notice");
+
+        if (languageElement) {
+          languageElement.insertAdjacentElement("afterend", metaElement);
+        } else if (copyNotice) {
+          highlightTools.insertBefore(metaElement, copyNotice);
+        } else {
+          highlightTools.appendChild(metaElement);
+        }
+      }
+
       highlightTools.addEventListener("click", highlightToolsHandler);
       fragment.appendChild(highlightTools);
     }
